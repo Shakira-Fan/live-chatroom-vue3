@@ -20,14 +20,14 @@ export default {
   name: "NewChatForm",
   setup() {
     const {user} = getUser()
-    const{addDoc,error}=useCollection('message')
+    const{addDoc,error}=useCollection('messages')
 
     const message = ref('')
     const handleSubmit = async () => {
       const chat = {
         name: user.value.displayName,
         message: message.value,
-        createAt: timestamp()
+        createdAt: timestamp()
       }
 
       await addDoc(chat)
